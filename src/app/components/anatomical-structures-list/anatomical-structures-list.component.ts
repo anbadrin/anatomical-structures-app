@@ -10,8 +10,8 @@ import {InfoModalComponent} from '../info-modal/info-modal.component'
   styleUrls: ['./anatomical-structures-list.component.css']
 })
 export class AnatomicalStructuresListComponent implements OnInit{
-  apiNames: string[] = [];
-  apiIds: string[] = [];
+  structures: Structure[] = [];
+  dataLoaded = false;
   label?: string = '';
   description?: string = '';
   obo_id?: string = '';
@@ -19,20 +19,26 @@ export class AnatomicalStructuresListComponent implements OnInit{
   constructor(private dataApi:DataApiService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.dataApi.getData().subscribe((anatomicalStructures)=>{
-      anatomicalStructures?.map((anatomicalStructure: Array<Structure>) => {
-        anatomicalStructure.map((anatomy: Structure) => {
-          if (anatomy.id && anatomy.name && (this.apiNames.indexOf(anatomy.name) === -1)){
-            this.apiNames.push(anatomy.name);
-            this.apiIds.push(anatomy.id)
-          }
-        })
-      })
+    this.dataApi.getData().subscribe({
+      next: (anatomicalStructures) => {
+        anatomicalStructures?.forEach((anatomicalStructure: Array<Structure>) => {
+          this.structures = [...this.structures, ...anatomicalStructure];
+        });
+        this.structures = this.structures.filter((val, i, arr) => {
+          return arr.findIndex(elem => elem.name?.toLowerCase() === val.name?.toLowerCase()) === i
+        });
+        console.log(this.structures);
+        this.dataLoaded = true;
+      }, error: (e) => {
+        console.log(e);
+      }
     });
-    console.log(this.apiIds)
   }
 
-  onNameClick(id: string): void {
+  onNameClick(id?: string): void {
+    if (!id) {
+      return;
+    }
     this.dataApi.getInfo(id).subscribe((response)=>{
       this.dialog.open(InfoModalComponent, {
         data: response

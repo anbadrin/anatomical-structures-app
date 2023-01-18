@@ -1,20 +1,18 @@
 <h1>Anatomical Structures Data</h1>
-<div>
+<div *ngIf="!dataLoaded">
+  <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="dataLoaded">
   <div>
-    <mat-grid-list cols="2" rowHeight="20px" *ngFor="let name of apiNames; let i=index" >
-      <mat-grid-tile [rowspan]="4" *ngIf="i%2===0">
+    <mat-grid-list cols="2" rowHeight="100px">
+      <div *ngFor="let structure of structures; let i=index">
+      <mat-grid-tile>
         <div class="inner-container">
-        <a class="box" (click)="onNameClick(apiIds[i])">Name: {{ apiNames[i] }}</a>
-        <p>Id: {{ apiIds[i] }}</p>
-      </div>
+        <a class="box" [ngClass]="{disabled: !structure.id}" (click)="onNameClick(structure.id)">Name: {{ structure.name }}</a>
+        <p>Id: {{ structure.id || 'ID Not Found' }}</p>
+        </div>
       </mat-grid-tile>
-      <mat-grid-tile [rowspan]="4" *ngIf="i%2===0">
-        <div class="inner-container">
-        <a class="box" (click)="onNameClick(apiIds[i+1])">Name: {{ apiNames[i+1] }}</a>
-        <p>Id: {{ apiIds[i+1] }}</p>
-      </div>
-      </mat-grid-tile>
+    </div>
     </mat-grid-list>
   </div>
 </div>
-

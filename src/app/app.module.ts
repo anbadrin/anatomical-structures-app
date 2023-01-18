@@ -9,6 +9,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import {MatDividerModule} from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { InfoModalComponent } from './components/info-modal/info-modal.component';
 import { AnatomicalStructuresListComponent } from './components/anatomical-structures-list/anatomical-structures-list.component';
 
@@ -25,7 +26,8 @@ import { AnatomicalStructuresListComponent } from './components/anatomical-struc
     MatButtonModule,
     MatDialogModule,
     MatGridListModule,
-    MatDividerModule
+    MatDividerModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

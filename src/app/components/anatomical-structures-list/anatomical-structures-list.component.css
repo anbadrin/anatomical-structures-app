@@ -14,3 +14,7 @@
     display: block;
     cursor: pointer;
 }
+
+.box.disabled {
+    cursor: not-allowed;
+}
