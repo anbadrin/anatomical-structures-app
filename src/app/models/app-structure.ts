@@ -26,9 +26,13 @@ export interface Row {
 
   export interface Terms {
     label?: string;
-    description?: string;
-    annotation?: string;
+    description?: string[];
+    annotation?: Annotation;
     obo_id?: string;
     iri?: string;
+  }
+
+  export interface Annotation {
+    definition?: string[];
   }
   

@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import {MatDialogRef} from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DialogData } from '../../models/info';
+import { Terms } from 'src/app/models/app-structure';
 
 @Component({
   selector: 'app-info-modal',
@@ -11,7 +11,7 @@ import { DialogData } from '../../models/info';
 export class InfoModalComponent{
   constructor(
     public dialogRef: MatDialogRef<InfoModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    @Inject(MAT_DIALOG_DATA) public data: Terms,
   ) {}
 
   onNoClick(): void {

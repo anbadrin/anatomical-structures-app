@@ -12,10 +12,10 @@ import {InfoModalComponent} from '../info-modal/info-modal.component'
 export class AnatomicalStructuresListComponent implements OnInit{
   apiNames: string[] = [];
   apiIds: string[] = [];
-  label: string = '';
-  description: string = '';
-  obo_id: string = '';
-  iri: string = '';
+  label?: string = '';
+  description?: string = '';
+  obo_id?: string = '';
+  iri?: string = '';
   constructor(private dataApi:DataApiService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
@@ -34,25 +34,8 @@ export class AnatomicalStructuresListComponent implements OnInit{
 
   onNameClick(id: string): void {
     this.dataApi.getInfo(id).subscribe((response)=>{
-      this.label = response.label
-      if (response.description && response.description.length > 0){
-        this.description = response.description[0]
-      }
-      else if (response.annotation.definition && response.annotation.definition.length > 0){
-        this.description = response.annotation.definition[0]
-      }
-      else{
-        this.description = 'No description present'
-      }
-      this.obo_id = response.obo_id
-      this.iri = response.iri 
-      const dialogRef = this.dialog.open(InfoModalComponent, {
-        data: {
-          label: this.label,
-          obo_id: this.obo_id,
-          description: this.description,
-          iri: this.iri,
-        }
+      this.dialog.open(InfoModalComponent, {
+        data: response
       });
       
     });

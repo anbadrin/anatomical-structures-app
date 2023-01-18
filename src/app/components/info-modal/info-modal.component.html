@@ -2,10 +2,14 @@
 <h1 mat-dialog-title class="dialog-headline">{{data.label}}</h1>
 <mat-divider></mat-divider>
 <div>
-  <h3 mat-dialog-title>Description</h3>
-  <p mat-dialog-content>{{data.description}}</p>
+  <ng-template
+    [ngIf]="(data.description && data.description.length) || (data.annotation && data.annotation.definition && data.annotation.definition.length)">
+    <h3 mat-dialog-title>Description</h3>
+    <p *ngIf="data.description && data.description.length" mat-dialog-content>{{data.description[0]}}</p>
+    <p *ngIf="!(data.description && data.description.length) && data.annotation && data.annotation.definition && data.annotation.definition.length" mat-dialog-content>{{data.annotation.definition[0]}}</p>
+  </ng-template>
 </div>
-<div >
+<div>
   <h3 mat-dialog-title>Ontology Link</h3>
   <p mat-dialog-content>{{data.obo_id}}</p>
 </div>
@@ -13,4 +17,3 @@
   <h3 mat-dialog-title>IRI</h3>
   <p mat-dialog-content>{{data.iri}}</p>
 </div>
-
