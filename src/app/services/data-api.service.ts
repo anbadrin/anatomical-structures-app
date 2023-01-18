@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import { throwError } from 'rxjs';
-import { data, info, Row, Structure } from '../models/data';
+import { data, info, Row, Structure } from '../models/app-structure';
 import { AppConstants } from '../constants';
 
 @Injectable({
@@ -17,12 +17,9 @@ export class DataApiService {
       .pipe(
         map((response: data) => {
           return response.data?.map((rows: Row) => {
-            //console.log(rows.anatomical_structures)
             return rows.anatomical_structures.map((anatomicalStructure: Structure) => {
-              //console.log(anatomicalStructure)
               return anatomicalStructure
             });
-            //return rows.anatomical_structures
           }
           )  
         }),
@@ -32,7 +29,6 @@ export class DataApiService {
 
   getInfo(id: string){
     id = id.replace(":","_")
-    //console.log("Id in service:",id)
     return this.http.get(AppConstants.INFO_API_ENDPOINT+id)
       .pipe(
         map((response: info) => {
@@ -43,7 +39,6 @@ export class DataApiService {
   }
 
   private handleError(error: HttpErrorResponse) {
-    //console.error(error.message);
     return throwError('A data error occurred, please try again.');
   }
 }

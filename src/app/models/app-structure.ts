@@ -23,4 +23,11 @@ export interface Row {
   export interface info {
     _embedded?: any
   }
+
+  export interface Terms {
+    name?: string;
+    description?: string;
+    ontology_link?: string;
+    iri?: string;
+  }
   

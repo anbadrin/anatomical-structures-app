@@ -8,16 +8,13 @@ import { DialogData } from '../../models/info';
   templateUrl: './info-modal.component.html',
   styleUrls: ['./info-modal.component.css']
 })
-export class InfoModalComponent implements OnInit{
+export class InfoModalComponent{
   constructor(
     public dialogRef: MatDialogRef<InfoModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) {}
 
-  ngOnInit(){
-  }
-
-  onNoClick() {
+  onNoClick(): void {
     console.log("On click")
     this.dialogRef.close()
   }

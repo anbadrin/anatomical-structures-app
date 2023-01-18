@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {DataApiService } from '../../services/data-api.service';
-import { Structure } from '../../models/data'
+import { Structure } from '../../models/app-structure'
 import {MatDialog} from '@angular/material/dialog';
 import {InfoModalComponent} from '../info-modal/info-modal.component'
 
@@ -18,7 +18,7 @@ export class AnatomicalStructuresListComponent implements OnInit{
   iri: string = '';
   constructor(private dataApi:DataApiService, public dialog: MatDialog) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.dataApi.getData().subscribe((anatomicalStructures)=>{
       anatomicalStructures?.map((anatomicalStructure: Array<Structure>) => {
         anatomicalStructure.map((anatomy: Structure) => {
@@ -32,7 +32,7 @@ export class AnatomicalStructuresListComponent implements OnInit{
     console.log(this.apiIds)
   }
 
-  onNameClick(id: string) {
+  onNameClick(id: string): void {
     this.dataApi.getInfo(id).subscribe((response)=>{
       this.label = response.label
       if (response.description && response.description.length > 0){
