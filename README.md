@@ -1,6 +1,6 @@
 # AnatomicalStructuresApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.1.
+This project is deployed on github pages on the url: [Anatomical Structures](https://anbadrin.github.io/anatomical-structures-app/)
 
 ## Development server
 
