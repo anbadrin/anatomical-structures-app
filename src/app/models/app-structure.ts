@@ -25,9 +25,10 @@ export interface Row {
   }
 
   export interface Terms {
-    name?: string;
+    label?: string;
     description?: string;
-    ontology_link?: string;
+    annotation?: string;
+    obo_id?: string;
     iri?: string;
   }
   

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import { throwError } from 'rxjs';
-import { data, info, Row, Structure } from '../models/app-structure';
+import { data, info, Row, Structure, Terms } from '../models/app-structure';
 import { AppConstants } from '../constants';
 
 @Injectable({
