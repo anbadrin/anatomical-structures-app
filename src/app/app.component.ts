@@ -12,6 +12,7 @@ export class AppComponent  implements OnInit{
   constructor(private _elementRef: ElementRef) {
   }
 
+  // On initialization, the ng-version is hidden from DOM for security
   ngOnInit(): void {
     this._elementRef.nativeElement.removeAttribute("ng-version");
 }

@@ -12,6 +12,8 @@ export class DataApiService {
 
   constructor (private http:HttpClient) {}
 
+  // This method gets the data for the name and id of anatomical structures
+  // It gets and returns only the anatomical structures by mapping out unnecessary data
   getData(): Observable<Structure[][] | undefined>{
     return this.http.get<data>(AppConstants.DATA_API_ENDPOINT)
       .pipe(
@@ -27,6 +29,7 @@ export class DataApiService {
       );
   }
 
+  // This method fetches the information related to a specific anatomical structure and passes it to component
   getInfo(id: string): Observable<Terms>{
     id = id.replace(":","_")
     return this.http.get(AppConstants.INFO_API_ENDPOINT+id)

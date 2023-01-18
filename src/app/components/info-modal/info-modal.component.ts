@@ -14,8 +14,8 @@ export class InfoModalComponent{
     @Inject(MAT_DIALOG_DATA) public data: Terms,
   ) {}
 
+  // This method closes the modal
   onNoClick(): void {
-    console.log("On click")
     this.dialogRef.close()
   }
 }

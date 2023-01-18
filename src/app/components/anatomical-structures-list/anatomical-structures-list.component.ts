@@ -18,6 +18,9 @@ export class AnatomicalStructuresListComponent implements OnInit{
   iri?: string = '';
   constructor(private dataApi:DataApiService, public dialog: MatDialog) {}
 
+  // This is the on init method and will be called on initialization
+  // It gets the data from the api for the names and ids and renders it on the UI
+  // This method also makes sure that the unique records based on names are filtered
   ngOnInit(): void {
     this.dataApi.getData().subscribe({
       next: (anatomicalStructures) => {
@@ -27,7 +30,6 @@ export class AnatomicalStructuresListComponent implements OnInit{
         this.structures = this.structures.filter((val, i, arr) => {
           return arr.findIndex(elem => elem.name?.toLowerCase() === val.name?.toLowerCase()) === i
         });
-        console.log(this.structures);
         this.dataLoaded = true;
       }, error: (e) => {
         console.log(e);
@@ -35,6 +37,8 @@ export class AnatomicalStructuresListComponent implements OnInit{
     });
   }
 
+  // When the name on the landing page is clicked, this method will be invoked
+  // This method gets response from the API for the anatomical structures info and passes to the modal component
   onNameClick(id?: string): void {
     if (!id) {
       return;
