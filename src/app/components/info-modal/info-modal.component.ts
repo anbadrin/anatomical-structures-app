@@ -1,13 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import {MatDialogRef} from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-
-interface DialogData {
-  label: string;
-  obo_id: string;
-  description: string;
-  iri: string;
-}
+import { DialogData } from '../../models/info';
 
 @Component({
   selector: 'app-info-modal',
@@ -21,7 +15,6 @@ export class InfoModalComponent implements OnInit{
   ) {}
 
   ngOnInit(){
-
   }
 
   onNoClick() {
