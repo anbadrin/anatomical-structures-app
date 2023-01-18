@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatDividerModule} from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
+import {MatGridListModule} from '@angular/material/grid-list';
 import { InfoModalComponent } from './components/info-modal/info-modal.component';
 import { AnatomicalStructuresListComponent } from './components/anatomical-structures-list/anatomical-structures-list.component';
 
@@ -21,7 +23,9 @@ import { AnatomicalStructuresListComponent } from './components/anatomical-struc
     AppRoutingModule,
     HttpClientModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatGridListModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,3 +7,10 @@
     min-width: auto;
     margin-left: 10px
   }
+
+  .dialog-headline{
+    font-weight: 500;
+    margin-bottom: 0;
+    text-align: left;
+    font-size: 1.5em;
+  }

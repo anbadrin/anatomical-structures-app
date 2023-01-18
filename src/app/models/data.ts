@@ -20,13 +20,6 @@ export interface Row {
     data?: Array<Row>;
   }
   
-  interface Terms {
-    name?: string;
-    description?: string;
-    ontology_link?: string;
-    iri?: string;
-  }
-  
   export interface info {
     _embedded?: any
   }
